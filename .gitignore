@@ -1,7 +1,8 @@
 env-ecommerce/
 .pytest_cache
 .env
-__pycache__/
+**__pycache__/
 db.sqlite3
 .coverage
 .vscode
+commands.cmd
