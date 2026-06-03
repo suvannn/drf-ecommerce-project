@@ -15,6 +15,25 @@ class BrandSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+
+    brand = serializers.PrimaryKeyRelatedField(
+        queryset=Brand.objects.all(), write_only=True
+    )
+    category = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(), write_only=True
+    )
+
+    brand_detail = BrandSerializer(source="brand", read_only=True)
+    category_detail = CategorySerializer(source="category", read_only=True)
+
     class Meta:
         model = Product
-        fields = "__all__"
+        fields = [
+            "name",
+            "description",
+            "is_digital",
+            "brand",
+            "category",
+            "brand_detail",
+            "category_detail",
+        ]

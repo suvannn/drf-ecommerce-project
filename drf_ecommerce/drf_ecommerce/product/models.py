@@ -25,7 +25,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     is_digital = models.BooleanField(default=False)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    Catergory = TreeForeignKey(
+    category = TreeForeignKey(
         "Category", null=True, blank=True, on_delete=models.SET_NULL
     )
 
